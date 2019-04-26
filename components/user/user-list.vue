@@ -1,7 +1,7 @@
 <template>
-  <b-card title="Organizations">
-    <b-table :items="organizations" :fields="columns">
-      <template slot="name" slot-scope="data">
+  <b-card title="Users">
+    <b-table :items="users" :fields="columns">
+      <template slot="name" scope="data">
         <router-link :to="getLink(data.item._id)">
           {{ data.item.name }}
         </router-link>
@@ -20,9 +20,11 @@
 <script>
 export default {
   props: {
-    'organizations': {
+    'users': {
       type: Array,
-      default: () => []
+      default: () => {
+        return []
+      }
     }
   },
 
@@ -30,17 +32,15 @@ export default {
     return {
       columns: [
         'name',
-        'projects',
-        'primary_account',
-        'subscription',
+        'email',
         'actions'
       ]
     }
   },
 
   methods: {
-    getLink: (organizationId) => {
-      return `organizations/${organizationId}`
+    getLink: (userId) => {
+      return `users/${userId}`
     }
   }
 }

@@ -1,8 +1,8 @@
 <template>
   <div class="page">
-    <b-breadcrumb :items="breadcrumbs"/>
+    <b-breadcrumb :items="breadcrumbs" />
     <milestone-detail />
-    <task-list/>
+    <task-list />
   </div>
 </template>
 

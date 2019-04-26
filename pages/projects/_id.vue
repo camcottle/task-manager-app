@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <b-breadcrumb :items="breadcrumbs"/>
+    <b-breadcrumb :items="breadcrumbs" />
     <project-detail />
   </div>
 </template>

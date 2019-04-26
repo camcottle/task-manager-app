@@ -1,24 +1,24 @@
 <template>
-  <b-card title="Projects">
+  <b-card title="Task">
     <b-row>
       <b-col>
         <b-form-group>
-          <label>Project name</label>
-          <input type="text" class="form-control">
+          <label>Organization name</label>
+          <input type="text" class="form-control"/>
         </b-form-group>
       </b-col>
       <b-col>
         <b-form-group>
-          <label>Priority</label>
-          <input type="text" class="form-control">
+          <label>Created</label>
+          <input type="text" class="form-control"/>
         </b-form-group>
       </b-col>
     </b-row>
     <b-row>
       <b-col>
         <b-form-group>
-          <label>Description</label>
-          <textarea class="form-control" />
+          <label>Subscription</label>
+          <input type="text" class="form-control"/>
         </b-form-group>
       </b-col>
     </b-row>

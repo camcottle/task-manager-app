@@ -1,8 +1,8 @@
 <template>
   <div class="page">
-    <b-breadcrumb :items="breadcrumbs"/>
+    <b-breadcrumb :items="breadcrumbs" />
     <b-card title="Users">
-      <b-table></b-table>
+      <b-table />
     </b-card>
   </div>
 </template>

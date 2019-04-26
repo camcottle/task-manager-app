@@ -1,9 +1,9 @@
 <template>
-    <div class="content">
-        <div>
-            <nuxt-child />
-        </div>
+  <div class="content">
+    <div>
+      <nuxt-child />
     </div>
+  </div>
 </template>
 
 <script>

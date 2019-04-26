@@ -4,12 +4,12 @@
       <b-col>[header]</b-col>
     </b-row>
     <b-row>
-        <b-col cols="3" id="MainSidebar">
-          <sidebar></sidebar>
-        </b-col>
-        <b-col cols="9" id="MainBody">
-          <nuxt/>
-        </b-col>
+      <b-col id="MainSidebar" cols="3">
+        <sidebar />
+      </b-col>
+      <b-col id="MainBody" cols="9">
+        <nuxt />
+      </b-col>
     </b-row>
   </div>
 </template>

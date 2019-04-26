@@ -14,10 +14,18 @@ export default {
     OrganizationList
   },
 
+  data: () => {
+    return {
+      breadcrumbs: [
+        { text: 'Dashboard', to: { path: '/' } },
+        { text: 'Organizations', to: { name: 'organizations' } }
+      ]
+    }
+  },
+
   computed: {
     ...mapState({
       organizations: (state) => {
-        console.log(state.organizations)
         return state.organizations.all
       },
       organizationsCount: state => state.organization.all.total
@@ -25,21 +33,12 @@ export default {
   },
 
   mounted() {
-    this.getTheShit()
+    this.getResults()
   },
 
   methods: {
-    getTheShit() {
+    getResults() {
       this.$store.dispatch('organizations/fetchAll')
-    }
-  },
-
-  data: () => {
-    return {
-      breadcrumbs: [
-        { text: 'Dashboard', to: { path: '/' } },
-        { text: 'Organizations', to: { name: 'organizations' } }
-      ]
     }
   }
 }
