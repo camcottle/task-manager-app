@@ -1,5 +1,6 @@
 <template>
   <b-card title="Projects">
+    {{ project }}
     <b-row>
       <b-col>
         <b-form-group>

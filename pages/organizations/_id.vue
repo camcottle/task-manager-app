@@ -18,7 +18,8 @@ export default {
       organizationId: params.id,
       breadcrumbs: [
         { text: 'Dashboard', to: { path: '/' } },
-        { text: 'Organizations', to: { name: 'organizations' } }
+        { text: 'Organizations', to: { name: 'organizations' } },
+        { text: `${params.id}` }
       ]
     }
   }

@@ -1,9 +1,9 @@
 export default {
-  setAll(state, users) {
-    state.users = { ...users }
+  setAll(state, milestones) {
+    state.all = milestones
   },
 
-  setSelected(state, selected) {
-    state.selected = selected
+  setCurrent(state, current) {
+    state.current = current
   }
 }

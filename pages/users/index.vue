@@ -1,15 +1,16 @@
 <template>
   <div class="page">
     <b-breadcrumb :items="breadcrumbs" />
-    <b-card title="Users">
-      <b-table />
-    </b-card>
+    <user-list />
   </div>
 </template>
 
 <script>
+import UserList from '~/components/user/user-list'
+
 export default {
   components: {
+    UserList
   },
 
   data: () => {

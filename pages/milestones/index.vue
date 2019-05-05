@@ -1,15 +1,16 @@
 <template>
   <div class="page">
     <b-breadcrumb :items="breadcrumbs" />
-    <b-card title="Milestones">
-      <b-table />
-    </b-card>
+    <milestone-list />
   </div>
 </template>
 
 <script>
+import MilestoneList from '~/components/milestone/milestone-list'
+
 export default {
   components: {
+    MilestoneList
   },
 
   data: () => {

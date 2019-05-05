@@ -36,10 +36,26 @@ export default {
   },
 
   createOrganization({ commit }, organization) {
-    return new Promise((resolve, reject) => {})
+    return new Promise((resolve, reject) => {
+      this.$axios.post(
+        `/organizations`,
+        organization
+      )
+        .then((organization) => {
+          commit('setCurrent', organization.data)
+          resolve(organization.data)
+        })
+        .catch(err => reject(err))
+    })
   },
 
   deleteOrganization({ commit }, organizationId) {
-    return new Promise((resolve, reject) => {})
+    return new Promise((resolve, reject) => {
+      this.$axios.delete(`/organizations/${organizationId}`)
+        .then((organization) => {
+          resolve(organization)
+        })
+        .catch(err => reject(err))
+    })
   }
 }

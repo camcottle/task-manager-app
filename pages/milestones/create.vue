@@ -1,25 +1,24 @@
 <template>
   <div class="page">
     <b-breadcrumb :items="breadcrumbs" />
-    <task-detail :task-id="taskId" />
+    <milestone-create />
   </div>
 </template>
 
 <script>
-import TaskDetail from '~/components/task/task-detail'
+import MilestoneCreate from '~/components/milestone/milestone-create'
 
 export default {
   components: {
-    TaskDetail
+    MilestoneCreate
   },
 
   asyncData({ params }) {
     return {
-      taskId: params.id,
       breadcrumbs: [
         { text: 'Dashboard', to: { path: '/' } },
-        { text: 'Users', to: { name: 'tasks' } },
-        { text: `${params.id}` }
+        { text: 'Milestones', to: { name: 'milestones' } },
+        { text: 'Create' }
       ]
     }
   }

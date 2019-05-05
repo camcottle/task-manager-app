@@ -1,13 +1,10 @@
 <template>
   <div class="Main">
-    <b-row id="MainHeader">
-      <b-col>[header]</b-col>
-    </b-row>
     <b-row>
-      <b-col id="MainSidebar" cols="3">
+      <b-col id="MainSidebar" style="display: none" cols="3">
         <sidebar />
       </b-col>
-      <b-col id="MainBody" cols="9">
+      <b-col id="MainBody" cols="12">
         <nuxt />
       </b-col>
     </b-row>

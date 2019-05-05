@@ -17,7 +17,7 @@ export default {
     return {
       breadcrumbs: [
         { text: 'Dashboard', to: { path: '/' } },
-        { text: 'Tasks', to: { name: 'tasks' } }
+        { text: 'Users', to: { name: 'tasks' } }
       ]
     }
   }

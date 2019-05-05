@@ -1,12 +1,14 @@
 <template>
   <b-card>
     <b-title>
-      <h4 class="float-left">Tasks</h4>
-      <router-link to="/tasks/create" class="float-right">
+      <h4 class="float-left">
+        Milestones
+      </h4>
+      <router-link to="/milestones/create" class="float-right">
         <b-button>Add</b-button>
       </router-link>
     </b-title>
-    <b-table :items="tasks" :fields="columns">
+    <b-table :items="milestones" :fields="columns">
       <template slot="name" slot-scope="data">
         <router-link :to="getLink(data.item._id)">
           {{ data.item.name }}
@@ -29,8 +31,9 @@ export default {
     return {
       columns: [
         'name',
-        'project',
-        'points',
+        'projects',
+        'primary_account',
+        'subscription',
         'actions'
       ]
     }
@@ -38,10 +41,10 @@ export default {
 
   computed: {
     ...mapState({
-      tasks: (state) => {
-        return state.tasks.all
+      milestones: (state) => {
+        return state.milestones.all
       },
-      tasksCount: state => state.task.all.total
+      milestonesCount: state => state.milestone.all.total
     })
   },
 
@@ -51,17 +54,17 @@ export default {
 
   methods: {
     getResults() {
-      this.$store.dispatch('tasks/fetchAll')
+      this.$store.dispatch('milestones/fetchAll')
     },
 
-    onDelete(taskId) {
-      this.$store.dispatch('tasks/deleteTask', taskId)
+    onDelete(milestoneId) {
+      this.$store.dispatch('milestones/deleteMilestone', milestoneId)
         .then(() => {
-          this.$store.dispatch('tasks/fetchAll')
+          this.$store.dispatch('milestones/fetchAll')
         })
     },
-    getLink: (taskId) => {
-      return `/tasks/${taskId}`
+    getLink: (milestoneId) => {
+      return `/milestones/${milestoneId}`
     }
   }
 }

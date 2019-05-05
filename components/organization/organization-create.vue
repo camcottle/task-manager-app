@@ -3,7 +3,7 @@
     <form @submit.prevent="onSubmit">
       <b-card-title>
         <h4>
-          Milestone
+          Organization
           <b-button-group class="float-right">
             <b-button type="submit">
               Save
@@ -14,8 +14,22 @@
       <b-row>
         <b-col>
           <b-form-group>
-            <label>Milestone name</label>
+            <label>Organization name</label>
             <input v-model="formData.name" type="text" class="form-control">
+          </b-form-group>
+        </b-col>
+        <b-col>
+          <b-form-group>
+            <label>Created</label>
+            <input type="text" class="form-control">
+          </b-form-group>
+        </b-col>
+      </b-row>
+      <b-row>
+        <b-col>
+          <b-form-group>
+            <label>Subscription</label>
+            <input type="text" class="form-control">
           </b-form-group>
         </b-col>
       </b-row>
@@ -24,45 +38,23 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
 export default {
-  props: [
-    'milestoneId'
-  ],
-
   data() {
     return {
       formData: {
-        name: 'blank'
+        name: ''
       }
     }
-  },
-
-  mounted() {
-    this.getMilestone(this.milestoneId)
   },
 
   methods: {
     onSubmit() {
-      this.$store.dispatch('milestones/updateMilestone', this.formData)
-    },
-
-    getMilestone() {
-      this.$store.dispatch('milestones/getMilestone', this.milestoneId)
-    }
-  },
-
-  computed: {
-    ...mapState({
-      milestone: (state) => {
-        return state.milestones.current
-      }
-    })
-  },
-
-  watch: {
-    milestone(milestone) {
-      this.formData = { ...milestone }
+      this.$store.dispatch(
+        'organizations/createOrganization',
+        this.formData
+      ).then(() => {
+        this.$router.push('/organizations/')
+      })
     }
   }
 }

@@ -1,9 +1,9 @@
 export default {
-  setAll(state, users) {
-    state.users = { ...users }
+  setAll(state, tasks) {
+    state.all = tasks
   },
 
-  setSelected(state, selected) {
-    state.selected = selected
+  setCurrent(state, current) {
+    state.current = current
   }
 }

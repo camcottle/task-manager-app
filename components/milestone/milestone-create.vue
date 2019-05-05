@@ -24,45 +24,23 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
 export default {
-  props: [
-    'milestoneId'
-  ],
-
   data() {
     return {
       formData: {
-        name: 'blank'
+        name: ''
       }
     }
-  },
-
-  mounted() {
-    this.getMilestone(this.milestoneId)
   },
 
   methods: {
     onSubmit() {
-      this.$store.dispatch('milestones/updateMilestone', this.formData)
-    },
-
-    getMilestone() {
-      this.$store.dispatch('milestones/getMilestone', this.milestoneId)
-    }
-  },
-
-  computed: {
-    ...mapState({
-      milestone: (state) => {
-        return state.milestones.current
-      }
-    })
-  },
-
-  watch: {
-    milestone(milestone) {
-      this.formData = { ...milestone }
+      this.$store.dispatch(
+        'milestones/createMilestone',
+        this.formData
+      ).then(() => {
+        this.$router.push('/milestones/')
+      })
     }
   }
 }

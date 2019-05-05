@@ -1,25 +1,24 @@
 <template>
   <div class="page">
     <b-breadcrumb :items="breadcrumbs" />
-    <task-detail :task-id="taskId" />
+    <project-create />
   </div>
 </template>
 
 <script>
-import TaskDetail from '~/components/task/task-detail'
+import ProjectCreate from '~/components/projects/project-create'
 
 export default {
   components: {
-    TaskDetail
+    ProjectCreate
   },
 
   asyncData({ params }) {
     return {
-      taskId: params.id,
       breadcrumbs: [
         { text: 'Dashboard', to: { path: '/' } },
-        { text: 'Users', to: { name: 'tasks' } },
-        { text: `${params.id}` }
+        { text: 'Projects', to: { name: 'projects' } },
+        { text: 'Create' }
       ]
     }
   }

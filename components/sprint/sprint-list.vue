@@ -1,40 +1,65 @@
 <template>
-  <b-card title="Sprints">
-    <b-table :items="items" />
+  <b-card>
+    <b-title>
+      <h4 class="float-left">Sprint</h4>
+      <router-link to="/sprints/create" class="float-right">
+        <b-button>Add</b-button>
+      </router-link>
+    </b-title>
+    <b-table :items="sprints" :fields="columns">
+      <template slot="name" slot-scope="data">
+        <router-link :to="getLink(data.item._id)">
+          {{ data.item.name }}
+        </router-link>
+      </template>
+      <template slot="actions" slot-scope="data">
+        <b-button-group class="float-right">
+          <b-button @click="onDelete(data.item._id)">Deactivate</b-button>
+        </b-button-group>
+      </template>
+    </b-table>
   </b-card>
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
 
   data: () => {
     return {
-      items: [
-        {
-          name: 'Sprint 39',
-          end_date: '4/30/2019',
-          tasks: 130,
-          progress: '39%',
-          estimated_effort: 198,
-          status: 'in-progress'
-        },
-        {
-          name: 'Sprint 38',
-          end_date: '4/14/2019',
-          tasks: 189,
-          estimated_effort: 213,
-          progress: '100%',
-          status: 'complete'
-        },
-        {
-          name: 'Sprint 37',
-          end_date: '3/30/2019',
-          tasks: 114,
-          estimated_effort: 255,
-          progress: '90%',
-          status: 'complete'
-        }
+      columns: [
+        'name',
+        'actions'
       ]
+    }
+  },
+
+  computed: {
+    ...mapState({
+      sprints: (state) => {
+        return state.sprints.all
+      },
+      sprintsCount: state => state.sprint.all.total
+    })
+  },
+
+  mounted() {
+    this.getResults()
+  },
+
+  methods: {
+    getResults() {
+      this.$store.dispatch('sprints/fetchAll')
+    },
+
+    onDelete(sprintId) {
+      this.$store.dispatch('sprints/deleteTask', sprintId)
+        .then(() => {
+          this.$store.dispatch('sprints/fetchAll')
+        })
+    },
+    getLink: (sprintId) => {
+      return `/sprints/${sprintId}`
     }
   }
 }

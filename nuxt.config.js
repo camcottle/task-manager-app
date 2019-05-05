@@ -37,6 +37,7 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    '~/plugins/axios'
   ],
 
   /*
@@ -59,6 +60,10 @@ module.exports = {
   server: {
     port: 3001
   },
+
+  middleware: [
+    '@/middleware/auth.js'
+  ],
   /*
   ** Build configuration
   */
